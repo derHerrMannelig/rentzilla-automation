@@ -15,11 +15,11 @@ describe('"Services" section', () => {
       for (let n: number = 0; n < await mainPage.servicesItems.length; n++) {
         // let item: string = await mainPage.servicesItemsNames[n].getText();
         await mainPage.clickServicesItem(n);
-        await browser.pause(500)
+        await browser.pause(1000)
         await expect(browser).toHaveUrl(`https://stage.rentzila.com.ua/products/`);
         await mainPage.clickFirstCatalogUnit();
         await mainPage.clickNavLogo();
-        await browser.pause(500)
+        await browser.pause(1000)
       }
     }
   })
