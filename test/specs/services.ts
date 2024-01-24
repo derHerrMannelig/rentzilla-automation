@@ -18,13 +18,13 @@ describe('"Services" section', () => {
         await mainPage.clickTelegramClose();
         await mainPage.clickServicesItem(n);
         await browser.pause(1000)
-        await expect(browser).toHaveUrl(`https://stage.rentzila.com.ua/products/`);
+        await expect(browser).toHaveUrl(`${process.env.ENV}products/`);
         await expect(await mainPage.selectedItem).toHaveText(item);
         await expect(await mainPage.catalogUnits).toBeDisplayed();
         await mainPage.clickFirstCatalogUnit();
         await expect(await mainPage.serviceTag(item)).toBeExisting();
         await mainPage.clickNavLogo();
-        await expect(browser).toHaveUrl(`https://stage.rentzila.com.ua/`);
+        await expect(browser).toHaveUrl(`${process.env.ENV}`);
         await browser.pause(1000)
       }
     }
