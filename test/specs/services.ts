@@ -22,6 +22,7 @@ describe('"Services" section', () => {
         await expect(await mainPage.selectedItem).toHaveText(item);
         await expect(await mainPage.catalogUnits).toBeDisplayed();
         await mainPage.clickFirstCatalogUnit();
+        await expect(browser).toHaveUrl(expect.stringContaining(`unit`));
         await expect(await mainPage.serviceTag(item)).toBeExisting();
         await mainPage.clickNavLogo();
         await expect(browser).toHaveUrl(`${process.env.ENV}`);
