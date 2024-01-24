@@ -11,28 +11,28 @@ const telegramClose: string = 'div[data-testid="crossButton"]';
 
 class MainPage extends Page {
   public get servicesSection () {
-    return $(servicesSection);
+    return super.get(servicesSection);
   }
   public get servicesTabs () {
-    return $$(servicesTabs);
+    return super.getAll(servicesTabs);
   }
   public get servicesItems () {
-    return $$(servicesItems);
+    return super.getAll(servicesItems);
   }
   public get servicesItemsNames() {
-    return $$(servicesItemsNames);
+    return super.getAll(servicesItemsNames);
   }
   public get catalogUnits () {
-    return $$(catalogUnits);
+    return super.getAll(catalogUnits);
   }
   public get navLogo () {
-    return $(navLogo);
+    return super.get(navLogo);
   }
   public get selectedItem () {
-    return $(selectedItem);
+    return super.get(selectedItem);
   }
   public get telegramClose () {
-    return $(telegramClose)
+    return super.get(telegramClose)
   }
 
   public async serviceTag (item: string) {
