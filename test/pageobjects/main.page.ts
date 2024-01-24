@@ -11,8 +11,12 @@ const telegramClose: string = 'div[data-testid="crossButton"]';
 const vehiclesSection: string = 'section[data-testid="specialEquipment"]';
 const vehiclesTabs: string = 'div.RentzilaProposes_categories_list__cxa6m > h3.RentzilaProposes_service__oHepD';
 const vehiclesItems: string = 'section[data-testid="specialEquipment"] > div.RentzilaProposes_proposes_list__X8dRW > div.RentzilaProposes_proposes_item__sY_h2';
+const mainTitle: string = 'h1.HeroSection_title__QIzpM';
 
 class MainPage extends Page {
+  public get mainTitle () {
+    return super.get(mainTitle);
+  }
   public get servicesSection () {
     return super.get(servicesSection);
   }
