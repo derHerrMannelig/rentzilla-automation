@@ -6,6 +6,8 @@ const servicesItems: string = 'section[data-testid="services"] > div.RentzilaPro
 const servicesItemsNames: string = 'section[data-testid="services"] > div.RentzilaProposes_proposes_list__X8dRW > div.RentzilaProposes_proposes_item__sY_h2 > div.RentzilaProposes_name__DTnwr';
 const catalogUnits: string = 'div[data-testid="cardWrapper"]';
 const navLogo: string = 'a > div[data-testid="logo"]';
+const selectedItem: string = 'div.ResetFilters_selectedCategory___D1E6 > p';
+const telegramClose: string = 'div[data-testid="crossButton"]';
 
 class MainPage extends Page {
   public get servicesSection () {
@@ -26,7 +28,16 @@ class MainPage extends Page {
   public get navLogo () {
     return $(navLogo);
   }
+  public get selectedItem () {
+    return $(selectedItem);
+  }
+  public get telegramClose () {
+    return $(telegramClose)
+  }
 
+  public async serviceTag (item: string) {
+    return $(`//div[@itemprop="services"]//div[contains(text(),'${item}')]`)
+  }
   public async clickServicesTab(i: number) {
     await this.servicesTabs[i].click();
   }
@@ -38,6 +49,11 @@ class MainPage extends Page {
   }
   public async clickNavLogo () {
     await this.navLogo.click();
+  }
+  public async clickTelegramClose () {
+    if (await this.telegramClose.isDisplayed()) {
+      await this.telegramClose.click()
+    }
   }
 
   public openBaseUrl () {
