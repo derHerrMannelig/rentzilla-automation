@@ -12,8 +12,44 @@ const vehiclesSection: string = 'section[data-testid="specialEquipment"]';
 const vehiclesTabs: string = 'div.RentzilaProposes_categories_list__cxa6m > h3.RentzilaProposes_service__oHepD';
 const vehiclesItems: string = 'section[data-testid="specialEquipment"] > div.RentzilaProposes_proposes_list__X8dRW > div.RentzilaProposes_proposes_item__sY_h2';
 const mainTitle: string = 'h1.HeroSection_title__QIzpM';
+const searchInput: string = 'div.Navbar_containerBottom__Kbaqk input[data-testid="searchInput"]';
+const searchHistory: string = 'div[data-testid="rightsideUnits"]';
+const searchHistoryFirst: string = 'div:first-of-type > div.SearchResultItem_item_name__SXnXJ:first-of-type';
+const searchServicesCategories: string = 'div.LeftsideSearch_container__XgEkO'
+const searchResult: string = 'h1.MapPagination_count__c_dzg';
+const searchMap: string = 'div.MapPage_homeMap__06sWe';
+const searchUnits: string = 'div[data-testid="cardContainer"]';
+const searchClear: string = 'div.Navbar_containerBottom__Kbaqk div[data-testid="searchClear"]';
+const unitTitle: string = 'h1.UnitName_name__oM_YV';
 
 class MainPage extends Page {
+  public get unitTitle () {
+    return super.get(unitTitle);
+  }
+  public get searchClear () {
+    return super.get(searchClear);
+  }
+  public get searchInput () {
+    return super.get(searchInput);
+  }
+  public get searchHistory () {
+    return super.get(searchHistory);
+  }
+  public get searchHistoryFirst () {
+    return super.get(searchHistoryFirst);
+  }
+  public get searchServicesCategories () {
+    return super.get(searchServicesCategories);
+  }
+  public get searchResult () {
+    return super.get(searchResult);
+  }
+  public get searchMap () {
+    return super.get(searchMap);
+  }
+  public get searchUnits ()  {
+    return super.getAll(searchUnits);
+  }
   public get mainTitle () {
     return super.get(mainTitle);
   }
@@ -51,6 +87,12 @@ class MainPage extends Page {
     return super.getAll(vehiclesItems);
   }
 
+  public async searchCertainService (text: string) {
+    return $(`//div[@data-testid="services"]/div[contains(text(), "${text}")]`)
+  }
+  public async searchCertainCategory (text: string) {
+    return $(`//div/div[contains(text(), "${text}")]`)
+  }
   public async serviceTag (item: string) {
     return $(`//div[@itemprop="services"]//div[contains(text(),'${item}')]`)
   }
@@ -63,8 +105,17 @@ class MainPage extends Page {
   public async clickFirstCatalogUnit () {
     await this.catalogUnits[0].click();
   }
+  public async clickFirstSearchUnit () {
+    await this.searchUnits[0].click();
+  }
   public async clickNavLogo () {
     await this.navLogo.click();
+  }
+  public async clickSearchInput () {
+    await this.searchInput.click();
+  }
+  public async clickSearchClear () {
+    await this.searchClear.click();
   }
   public async clickTelegramClose () {
     if (await this.telegramClose.isDisplayed()) {
