@@ -11,6 +11,7 @@ const telegramClose: string = 'div[data-testid="crossButton"]';
 const vehiclesSection: string = 'section[data-testid="specialEquipment"]';
 const vehiclesTabs: string = 'div.RentzilaProposes_categories_list__cxa6m > h3.RentzilaProposes_service__oHepD';
 const vehiclesItems: string = 'section[data-testid="specialEquipment"] > div.RentzilaProposes_proposes_list__X8dRW > div.RentzilaProposes_proposes_item__sY_h2';
+const vehiclesItemsNames: string = 'section[data-testid="specialEquipment"] > div.RentzilaProposes_proposes_list__X8dRW > div.RentzilaProposes_proposes_item__sY_h2 > div.RentzilaProposes_name__DTnwr';
 const mainTitle: string = 'h1.HeroSection_title__QIzpM';
 const searchInput: string = 'div.Navbar_containerBottom__Kbaqk input[data-testid="searchInput"]';
 const searchHistory: string = 'div[data-testid="rightsideUnits"]';
@@ -85,6 +86,9 @@ class MainPage extends Page {
   }
   public get vehiclesItems () {
     return super.getAll(vehiclesItems);
+  }
+  public get vehiclesItemsNames() {
+    return super.getAll(vehiclesItemsNames);
   }
 
   public async searchCertainService (text: string) {

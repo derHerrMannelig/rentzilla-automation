@@ -1,4 +1,6 @@
 import mainPage from '../pageobjects/main.page.js'
+import testData from '../fixtures/data.json' assert { type: 'json' };
+import assert from 'node:assert';
 
 describe('"Vehicles" section', () => {
   before(async () =>{
@@ -12,15 +14,19 @@ describe('"Vehicles" section', () => {
       await expect(await mainPage.vehiclesSection).toBeDisplayed()
       await expect(await mainPage.vehiclesTabs[i]).toBeDisplayed()
       await expect(await mainPage.vehiclesItems).toBeDisplayed()
-      await mainPage.clickVehiclesTab(i);
       for (let n: number = 0; n < await mainPage.vehiclesItems.length; n++) {
         await mainPage.clickTelegramClose();
+        await mainPage.clickVehiclesTab(i);
+        assert.strictEqual(await mainPage.vehiclesItemsNames[n].getText(), testData.vehicles1[(i * 7) + n]);
         await mainPage.clickVehiclesItem(n);
         await browser.pause(1000)
         await expect(browser).toHaveUrl(expect.stringContaining(`${process.env.ENV}products/`));
-        await expect(await mainPage.catalogUnits).toBeDisplayed();
-        await mainPage.clickFirstCatalogUnit();
-        await expect(browser).toHaveUrl(expect.stringContaining(`unit`));
+        assert.strictEqual(await mainPage.selectedItem.getText(), testData.vehicles2[(i * 7) + n]);
+        if (await mainPage.searchResult.getText() !== 'Знайдено 0 оголошень на видимій території') {
+          await expect(await mainPage.catalogUnits).toBeDisplayed();
+          await mainPage.clickFirstCatalogUnit();
+          await expect(browser).toHaveUrl(expect.stringContaining(`unit`));
+        }
         await mainPage.clickNavLogo();
         await expect(browser).toHaveUrl(`${process.env.ENV}`);
         await browser.pause(1000)
