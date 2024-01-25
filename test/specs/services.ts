@@ -13,9 +13,9 @@ describe('"Services" section', () => {
       await expect(await mainPage.servicesTabs[i]).toBeDisplayed()
       await expect(await mainPage.servicesItems).toBeDisplayed()
       for (let n: number = 0; n < await mainPage.servicesItems.length; n++) {
-        let item: string = await mainPage.servicesItemsNames[n].getText();
         await mainPage.clickTelegramClose();
         await mainPage.clickServicesTab(i);
+        let item: string = await mainPage.servicesItemsNames[n].getText();
         await mainPage.clickServicesItem(n);
         await browser.pause(1000)
         await expect(browser).toHaveUrl(`${process.env.ENV}products/`);
