@@ -22,8 +22,28 @@ const searchMap: string = 'div.MapPage_homeMap__06sWe';
 const searchUnits: string = 'div[data-testid="cardContainer"]';
 const searchClear: string = 'div.Navbar_containerBottom__Kbaqk div[data-testid="searchClear"]';
 const unitTitle: string = 'h1.UnitName_name__oM_YV';
+const catalogButton: string = 'div.Navbar_wrapperBottom__kiGE5 > div:first-of-type';
+const catalogContainer: string = 'div.Catalog_container__0jVbE';
+const catalog1lvl: string = 'div.Catalog_parent__k_4MP';
+const catalog2lvl: string = 'div.Catalog_list__sVdCj:not(.Catalog_listSecond__awZH7) > div.CatalogItem_item__xvBwY';
+const catalog3lvl: string = 'div.Catalog_listSecond__awZH7 > div.CatalogItem_item__xvBwY';
 
 class MainPage extends Page {
+  public get catalogButton () {
+    return super.get(catalogButton);
+  }
+  public get catalogContainer () {
+    return super.get(catalogContainer);
+  }
+  public get catalog1lvl () {
+    return super.getAll(catalog1lvl);
+  }
+  public get catalog2lvl () {
+    return super.getAll(catalog2lvl);
+  }
+  public get catalog3lvl () {
+    return super.getAll(catalog3lvl);
+  }
   public get unitTitle () {
     return super.get(unitTitle);
   }
@@ -99,6 +119,9 @@ class MainPage extends Page {
   }
   public async serviceTag (item: string) {
     return $(`//div[@itemprop="services"]//div[contains(text(),'${item}')]`)
+  }
+  public async clickCatalogButton () {
+    await this.catalogButton.click();
   }
   public async clickServicesTab(i: number) {
     await this.servicesTabs[i].click();
