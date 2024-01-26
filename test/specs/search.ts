@@ -15,6 +15,7 @@ describe('Search input', () => {
     await expect(await mainPage.searchHistory).toBeDisplayed();
     await expect(await mainPage.searchServicesCategories).toBeDisplayed();
     await browser.keys('\uE007');
+    await browser.pause(1000);
     await expect(browser).toHaveUrl(`${process.env.ENV}products/`);
     await expect(await mainPage.searchInput).toHaveValue('');
     await expect(await mainPage.catalogUnits).toBeDisplayed();
@@ -22,6 +23,7 @@ describe('Search input', () => {
     await mainPage.clickSearchInput();
     await mainPage.searchInput.setValue(`${testData.searchInput1}`);
     await browser.keys('\uE007');
+    await browser.pause(1000);
     await expect(browser).toHaveUrl(`${process.env.ENV}products/`);
     await expect(await mainPage.searchMap).toBeDisplayed();
     await expect(await mainPage.searchResult).toBeDisplayed();
@@ -35,6 +37,7 @@ describe('Search input', () => {
     await expect(await mainPage.searchHistoryFirst).toHaveText(`${testData.searchInput1}`);
     await mainPage.searchInput.setValue(`${testData.searchInput2}`);
     await browser.keys('\uE007');
+    await browser.pause(1000);
     await expect(browser).toHaveUrl(`${process.env.ENV}products/`);
     await expect(await mainPage.searchMap).toBeDisplayed();
     await expect(await mainPage.searchResult).toBeDisplayed();
@@ -57,6 +60,7 @@ describe('Search input', () => {
     await mainPage.searchInput.setValue(`${testData.searchInput4}`);
     await expect(await mainPage.searchUnits).not.toBeExisting();
     await browser.keys('\uE007');
+    await browser.pause(1000);
     await expect(browser).toHaveUrl(`${process.env.ENV}products/`);
     await expect(await mainPage.searchResult).toHaveText(`Знайдено 0 оголошень на видимій території за запитом " "`);
     await mainPage.clickNavLogo();
@@ -65,6 +69,7 @@ describe('Search input', () => {
     await mainPage.searchInput.setValue(`${testData.searchInput5}`);
     await expect(await mainPage.searchUnits).toBeExisting();
     await browser.keys('\uE007');
+    await browser.pause(1000);
     await expect(browser).toHaveUrl(`${process.env.ENV}products/`);
     await expect(await mainPage.searchResult).toBeDisplayed();
     await expect(await mainPage.searchResult).toHaveText(expect.stringContaining(`${testData.searchInput5}`));
@@ -80,6 +85,7 @@ describe('Search input', () => {
       await expect(await mainPage.searchUnits).not.toBeDisplayed();
     }
     await browser.keys('\uE007');
+    await browser.pause(1000);
     await expect(browser).toHaveUrl(`${process.env.ENV}products/`);
     if (!['<', '>', '^', ';', '{', '}','`'].includes(randomSymbol)) {
       await expect(await mainPage.searchInput).toHaveValue(`${randomSymbol}`);
@@ -94,6 +100,7 @@ describe('Search input', () => {
     await mainPage.searchInput.setValue(`${testData.searchInput6}`);
     await expect(await mainPage.searchUnits).not.toBeExisting();
     await browser.keys('\uE007');
+    await browser.pause(1000);
     await expect(browser).toHaveUrl(`${process.env.ENV}products/`);
     await expect(await mainPage.searchResult).toHaveText(`Знайдено 0 оголошень на видимій території за запитом "${testData.searchInput6}"`);
     await mainPage.clickNavLogo();
