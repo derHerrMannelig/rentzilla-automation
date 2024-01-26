@@ -49,8 +49,10 @@ describe('Feedback section', () => {
     await feedbackPage.clickFeedbackPhone();
     (await feedbackPage.feedbackPhone).setValue(`${testData.phone1}`);
     await browser.pause(1000);
+    browser.setupInterceptor();
     await feedbackPage.clickFeedbackSubmit();
     await browser.pause(2000);
+    browser.expectRequest('POST', `${process.env.ENV}api/backcall/`, 201);
     await browser.acceptAlert();
   })
 })
