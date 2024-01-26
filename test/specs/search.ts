@@ -20,6 +20,7 @@ describe('Search input', () => {
     await expect(await mainPage.searchInput).toHaveValue('');
     await expect(await mainPage.catalogUnits).toBeDisplayed();
     await mainPage.clickNavLogo();
+    await browser.pause(1000);
     await mainPage.clickSearchInput();
     await mainPage.searchInput.setValue(`${testData.searchInput1}`);
     await browser.keys('\uE007');
@@ -31,6 +32,7 @@ describe('Search input', () => {
     await mainPage.clickFirstCatalogUnit();
     await expect(browser).toHaveUrl(expect.stringContaining(`unit`));
     await mainPage.clickNavLogo();
+    await browser.pause(1000);
     await mainPage.clickSearchInput();
     await expect(await mainPage.searchHistory).toBeDisplayed();
     await expect(await mainPage.searchServicesCategories).toBeDisplayed();
@@ -45,6 +47,7 @@ describe('Search input', () => {
     await mainPage.clickFirstCatalogUnit();
     await expect(browser).toHaveUrl(expect.stringContaining(`unit`));
     await mainPage.clickNavLogo();
+    await browser.pause(1000);
     await mainPage.clickSearchInput();
     await expect(await mainPage.searchHistory).toBeDisplayed();
     await expect(await mainPage.searchServicesCategories).toBeDisplayed();
@@ -133,6 +136,7 @@ describe('Search input', () => {
     await expect(await mainPage.searchResult).toBeDisplayed();
     await expect(await mainPage.searchResult).toHaveText(expect.stringContaining(`Знайдено`));
     await mainPage.clickNavLogo();
+    await browser.pause(1000);
     await mainPage.clickSearchInput();
     await mainPage.searchInput.setValue(`${testData.searchInput3}`);
     await expect(await mainPage.searchHistory).toBeDisplayed();
