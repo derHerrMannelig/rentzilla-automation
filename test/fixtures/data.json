@@ -156,5 +156,13 @@
     "obladnannia-dlya-komunalnoyi-tekhniki",
     "tekhnika-dlya-sadu-ta-gorodu",
     "traktori"
+  ],
+  "sklad1": [
+    "Обладнання для навантажувачів",
+    "Техніка для складування"
+  ],
+  "sklad2": [
+    "ekskavatori-dlya-znesennia",
+    "obladnannia-dlya-navantazhuvachiv"
   ]
 }
